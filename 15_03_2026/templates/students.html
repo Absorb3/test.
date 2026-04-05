@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Список учеников</title>
+		<style>
+			body {
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				background-color: #f4f7f6;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 20px;
+			}
+
+			.caption {
+				color: #2c3e50; /* Темно-синий вместо красного для солидности */
+				font-size: 40px;
+				margin-bottom: 20px;
+			}
+
+			table {
+				border-collapse: collapse;
+				width: 80%;
+				max-width: 800px;
+				background-color: white;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+				border-radius: 8px;
+				overflow: hidden; /* Чтобы скругление углов работало */
+			}
+
+			thead {
+				background-color: #3498db;
+				color: white;
+			}
+
+			th,
+			td {
+				padding: 12px 15px;
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+			}
+
+			/* Чередование цветов строк */
+			tbody tr:nth-child(even) {
+				background-color: #f9f9f9;
+			}
+
+			/* Эффект при наведении */
+			tbody tr:hover {
+				background-color: #f1f1f1;
+				transition: 0.3s;
+			}
+
+			.no-data {
+				color: #7f8c8d;
+				font-style: italic;
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="caption">Список учеников</h1>
+
+		{% if students %}
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Имя</th>
+					<th>Возраст</th>
+					<th>Оценка</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for student in students %}
+				<tr>
+					<td>{{ student.id }}</td>
+					<td><strong>{{ student.name }}</strong></td>
+					<td>{{ student.age }}</td>
+					<td>{{ student.grade }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<div class="no-data">
+			<p>Учеников пока нет</p>
+		</div>
+		{% endif %}
+		<div>
+			<a href="/add_student">Добавить учеников</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<form action="/add_student" method="POST">
+			<label for="name">Имя:</label>
+			<input id="name" name="name" type="text" required placeholder="Введите имя" />
+
+			<label for="age">Возраст:</label>
+			<input id="age" name="age" type="number" required placeholder="Введите возраст" />
+
+			<label for="grade">Оценка:</label>
+			<input id="grade" name="grade" type="number" required placeholder="Введите оценку" />
+
+			<button type="submit">Добавить</button>
+
+		</form>
+	{% if message %}
+	<p>{{ message }}</p>
+	{% endif %}
+
+	<div>
+			<a href="/">Назад к списку</a>
+		</div>
+	</body>
+</html>
